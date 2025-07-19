@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://o378cd38jbpn"]
 
-[ext_resource type="Script" path="res://scenes/effects/effects.gd" id="1_684xl"]
+[ext_resource type="Script" uid="uid://c5wkrclc2s17y" path="res://scenes/effects/effects.gd" id="1_684xl"]
 [ext_resource type="Material" uid="uid://cxr7ihe8nn4hv" path="res://addons/crt_shader/ShaderScreen.material" id="2_6s0uc"]
 [ext_resource type="Texture2D" uid="uid://b7rrbl58e5lm6" path="res://addons/crt_shader/CRTFrame.png" id="2_gnld5"]
-[ext_resource type="Script" path="res://addons/crt_shader/crt_screen.gd" id="3_fnqjd"]
+[ext_resource type="Script" uid="uid://ch2lfo67xtqtc" path="res://addons/crt_shader/crt_screen.gd" id="3_fnqjd"]
 
 [sub_resource type="Animation" id="Animation_nei75"]
 resource_name = "fade_in"
@@ -39,8 +39,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mwstw"]
 _data = {
-"fade_in": SubResource("Animation_nei75"),
-"fade_out": SubResource("Animation_uimty")
+&"fade_in": SubResource("Animation_nei75"),
+&"fade_out": SubResource("Animation_uimty")
 }
 
 [node name="Effects" type="CanvasLayer"]
