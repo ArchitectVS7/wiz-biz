@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://beg1iuhl8ave5"]
+
+[ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_a3gfh"]
+[ext_resource type="FontFile" uid="uid://byqkqg20ffjvu" path="res://resources/fonts/PixeloidMono-d94EV.ttf" id="1_cd55t"]
+[ext_resource type="Texture2D" uid="uid://bs6a8ma1gwkis" path="res://resources/sprites/shield/shield_bar.png" id="4_0qrsm"]
+[ext_resource type="Texture2D" uid="uid://bqvgn1ys2uume" path="res://resources/sprites/shield/shield.png" id="5_oaivt"]
+[ext_resource type="PackedScene" uid="uid://dmb0xakcacd5c" path="res://scenes/ui/game_over/game_over.tscn" id="6_rsuai"]
+[ext_resource type="PackedScene" uid="uid://ccy43tjhsc3tx" path="res://scenes/ui/pause/pause.tscn" id="6_wrva2"]
+[ext_resource type="PackedScene" uid="uid://crcay73gaft4j" path="res://scenes/ui/game_win/game_win.tscn" id="7_injqy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2de44"]
+font = ExtResource("1_cd55t")
+font_size = 26
+font_color = Color(0.72549, 0.980392, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a3gfh")
+
+[node name="Points" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -60.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 52.0
+grow_horizontal = 0
+pivot_offset = Vector2(-5, 5)
+text = "0"
+label_settings = SubResource("LabelSettings_2de44")
+horizontal_alignment = 2
+justification_flags = 162
+
+[node name="ShieldBar" type="Node2D" parent="."]
+position = Vector2(20, 20)
+scale = Vector2(1.5, 1.5)
+
+[node name="BG" type="Sprite2D" parent="ShieldBar"]
+texture = ExtResource("4_0qrsm")
+centered = false
+
+[node name="Shield1" type="Sprite2D" parent="ShieldBar"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(2, 3)
+texture = ExtResource("5_oaivt")
+centered = false
+
+[node name="Shield2" type="Sprite2D" parent="ShieldBar"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(34, 3)
+texture = ExtResource("5_oaivt")
+centered = false
+
+[node name="Shield3" type="Sprite2D" parent="ShieldBar"]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(66, 3)
+texture = ExtResource("5_oaivt")
+centered = false
+
+[node name="GameOver" parent="." instance=ExtResource("6_rsuai")]
+visible = false
+layout_mode = 1
+
+[node name="Pause" parent="." instance=ExtResource("6_wrva2")]
+visible = false
+layout_mode = 1
+
+[node name="GameWin" parent="." instance=ExtResource("7_injqy")]
+visible = false
+layout_mode = 1
+
+[connection signal="button_click" from="GameOver" to="." method="_on_game_over_button_click"]
+[connection signal="button_click" from="Pause" to="." method="_on_pause_button_click"]
+[connection signal="button_click" from="GameWin" to="." method="_on_game_win_button_click"]

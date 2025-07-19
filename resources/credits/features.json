@@ -1,0 +1,60 @@
+{
+	"features": [
+		{
+			"text": "Player spaceship with movement and shooting."
+		},
+		{
+			"text": "Player, enemies will have an energy type."
+		},
+		{
+			"text": "To destroy each other the energies need to be different."
+		},
+		{
+			"text": "Different enemy spaceships."
+		},
+		{
+			"text": "Enemies waves."
+		},
+		{
+			"text": "Boss fight."
+		},
+		{
+			"text": "CRT effect for retro look."
+		},
+		{
+			"text": "Menu with options including:",
+			"details": [
+				{
+					"type": "Borderless fullscreen or windowed mode."
+				},
+				{
+					"type": "Music and sound effects volume."
+				},
+				{
+					"type": "CRT effect configuration."
+				}
+			]
+		},
+		{
+			"text": "Game Over window."
+		},
+		{
+			"text": "Game Win window."
+		},
+		{
+			"text": "High Score."
+		},
+		{
+			"text": "Pause and resume game."
+		},
+		{
+			"text": "Score and shield bar."
+		},
+		{
+			"text": "Sound effects and music."
+		},
+		{
+			"text": "Windows, Mac and Linux version."
+		}
+	]
+}

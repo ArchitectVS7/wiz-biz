@@ -1,0 +1,139 @@
+[gd_scene load_steps=9 format=3 uid="uid://be6ewehio5siv"]
+
+[ext_resource type="Script" path="res://scenes/background/background.gd" id="1_3y2qg"]
+[ext_resource type="Texture2D" uid="uid://pw7gtk8b625i" path="res://resources/backgrounds/sky.png" id="2_ol8cr"]
+[ext_resource type="Texture2D" uid="uid://bxyeqr1salh2o" path="res://resources/backgrounds/clouds_bg.png" id="3_shas4"]
+[ext_resource type="Texture2D" uid="uid://djhdvdrokghmu" path="res://resources/backgrounds/cloud_lonely.png" id="4_ikt5t"]
+[ext_resource type="Texture2D" uid="uid://del273v50asjg" path="res://resources/backgrounds/glacial_mountains.png" id="4_qt26q"]
+[ext_resource type="Texture2D" uid="uid://bsltj1sd7sx5k" path="res://resources/backgrounds/clouds_mg_3.png" id="6_rycks"]
+[ext_resource type="Texture2D" uid="uid://w8cqndgtpavy" path="res://resources/backgrounds/clouds_mg_2.png" id="7_5c45p"]
+[ext_resource type="Texture2D" uid="uid://cs8twxadve0kt" path="res://resources/backgrounds/clouds_mg_1.png" id="8_xqh0f"]
+
+[node name="Background" type="ParallaxBackground"]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+script = ExtResource("1_3y2qg")
+metadata/_edit_vertical_guides_ = [2194.0]
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+modulate = Color(0.4, 0.4, 0.4, 1)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+texture_repeat = 3
+texture = ExtResource("2_ol8cr")
+centered = false
+region_rect = Rect2(0, 0, 1920, 989.583)
+
+[node name="Cloud Bg" type="ParallaxLayer" parent="."]
+modulate = Color(0.4, 0.4, 0.4, 1)
+position = Vector2(0, -45)
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Part1" type="Sprite2D" parent="Cloud Bg"]
+texture_repeat = 3
+texture = ExtResource("3_shas4")
+centered = false
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="Part2" type="Sprite2D" parent="Cloud Bg"]
+texture_repeat = 3
+position = Vector2(384, 0)
+texture = ExtResource("3_shas4")
+centered = false
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="Single Cloud" type="ParallaxLayer" parent="."]
+modulate = Color(0.4, 0.4, 0.4, 1)
+position = Vector2(0, 20)
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(768, 0)
+
+[node name="Part1" type="Sprite2D" parent="Single Cloud"]
+texture_repeat = 3
+texture = ExtResource("4_ikt5t")
+centered = false
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="Part2" type="Sprite2D" parent="Single Cloud"]
+texture_repeat = 3
+texture = ExtResource("4_ikt5t")
+centered = false
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="Mountais" type="ParallaxLayer" parent="."]
+modulate = Color(0.4, 0.4, 0.4, 1)
+motion_scale = Vector2(1.5, 0)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Part1" type="Sprite2D" parent="Mountais"]
+texture_repeat = 3
+texture = ExtResource("4_qt26q")
+centered = false
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="Part2" type="Sprite2D" parent="Mountais"]
+texture_repeat = 3
+position = Vector2(384, 0)
+texture = ExtResource("4_qt26q")
+centered = false
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="Cloud Floor 3" type="ParallaxLayer" parent="."]
+modulate = Color(0.4, 0.4, 0.4, 1)
+position = Vector2(0, 5)
+motion_scale = Vector2(2, 0)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Part1" type="Sprite2D" parent="Cloud Floor 3"]
+texture_repeat = 3
+texture = ExtResource("6_rycks")
+centered = false
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="Part2" type="Sprite2D" parent="Cloud Floor 3"]
+texture_repeat = 3
+position = Vector2(384, 0)
+texture = ExtResource("6_rycks")
+centered = false
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="Cloud Floor 2" type="ParallaxLayer" parent="."]
+modulate = Color(0.4, 0.4, 0.4, 1)
+position = Vector2(0, 20)
+motion_scale = Vector2(2.5, 0)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Part1" type="Sprite2D" parent="Cloud Floor 2"]
+texture_repeat = 3
+texture = ExtResource("7_5c45p")
+centered = false
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="Part2" type="Sprite2D" parent="Cloud Floor 2"]
+texture_repeat = 3
+position = Vector2(384, 0)
+texture = ExtResource("7_5c45p")
+centered = false
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="Cloud Floor 1" type="ParallaxLayer" parent="."]
+modulate = Color(0.4, 0.4, 0.4, 1)
+position = Vector2(0, 25)
+motion_scale = Vector2(3, 0)
+motion_mirroring = Vector2(384, 0)
+
+[node name="Part1" type="Sprite2D" parent="Cloud Floor 1"]
+texture_repeat = 3
+texture = ExtResource("8_xqh0f")
+centered = false
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="Part2" type="Sprite2D" parent="Cloud Floor 1"]
+texture_repeat = 3
+position = Vector2(384, 0)
+texture = ExtResource("8_xqh0f")
+centered = false
+region_rect = Rect2(0, 0, 1152, 648)

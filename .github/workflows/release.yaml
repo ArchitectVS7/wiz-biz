@@ -1,0 +1,87 @@
+name: release
+
+on:
+  release:
+    types: [created]
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  Godot:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [ windows, linux, mac ]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+
+      - name: Build
+        id: build
+        uses: felix-schindler/build-godot-action@v2.0.0
+        with:
+          name: shoot_em_up
+          preset: ${{ matrix.platform }}
+          debugMode: "false"
+
+      - name: Install Wine
+        if: matrix.platform == 'windows'
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt update
+          sudo apt install -y wine32
+
+      - name: Download rcedit
+        if: matrix.platform == 'windows'
+        run: |
+          wget https://github.com/electron/rcedit/releases/download/v2.0.0/rcedit-x86.exe
+
+      - name: Modify Executable with rcedit
+        if: matrix.platform == 'windows'
+        run: |
+          wine rcedit-x86 build/shoot_em_up.exe \
+              --set-icon resources/icon/juan_medina.ico \
+              --set-file-version "${{ github.event.release.name }}" \
+              --set-product-version "${{ github.event.release.name }}" \
+              --set-version-string "FileDescription" "Shoot 'em up in Godot 4" \
+              --set-version-string "ProductName" "Shoot 'em up" \
+              --set-version-string "CompanyName" "Juan Medina" \
+              --set-version-string "LegalCopyright" "(c) 2024 Juan Medina"
+
+      - name: Zip build artifact
+        run: |
+          cd build
+          zip -r ../shoot_em_up.zip *
+          md5sum ../shoot_em_up.zip > ../shoot_em_up.zip.md5
+
+      - name: Add zip to the release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: shoot_em_up.zip
+          asset_name: "shoot_em_up-${{ github.event.release.name }}-${{ matrix.platform }}.zip"
+          tag: ${{ github.ref }}
+          overwrite: true
+
+      - name: Add zip md5 to the release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: shoot_em_up.zip.md5
+          asset_name: "shoot_em_up-${{ github.event.release.name }}-${{ matrix.platform }}.zip.md5"
+          tag: ${{ github.ref }}
+          overwrite: true
+
+      - name: Publish to Itch.io
+        uses: KikimoraGames/itch-publish@v0.0.3
+        with:
+          butlerApiKey: ${{secrets.BUTLER_API_KEY}}
+          gameData: shoot_em_up.zip
+          itchUsername: juanmedina
+          itchGameId: godot-shoot-em-up
+          buildChannel: ${{ matrix.platform }}
+          buildNumber: ${{ github.event.release.name }}
