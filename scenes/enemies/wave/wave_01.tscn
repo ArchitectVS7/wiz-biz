@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbcex7rkvps8o"]
 
-[ext_resource type="Script" path="res://scenes/enemies/wave/wave.gd" id="1_7rx4d"]
+[ext_resource type="Script" uid="uid://8jamajryladu" path="res://scenes/enemies/wave/wave.gd" id="1_7rx4d"]
 [ext_resource type="PackedScene" uid="uid://dqejknaljhhmi" path="res://scenes/enemies/basic_enemy/basic_enemy.tscn" id="2_12bb4"]
 
 [node name="Wave01" type="Node2D"]
